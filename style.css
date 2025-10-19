@@ -1,0 +1,221 @@
+/* --- Cài đặt chung --- */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  font-family: "Quicksand", sans-serif;
+  overflow: hidden; /* Ẩn các phần tử tràn ra ngoài */
+  perspective: 1200px; /* Tạo không gian 3D */
+}
+
+.container {
+  width: 90%;
+  max-width: 500px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Khung chứa thiệp --- */
+.card-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  cursor: pointer;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.card-container.open {
+  transform: rotateY(-180deg);
+}
+
+/* --- Các mặt của thiệp --- */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Ẩn mặt sau khi xoay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+}
+
+/* --- Mặt trước --- */
+.front {
+  background: url("https://i.pinimg.com/originals/a8/5c/58/a85c58617c5934305888d0859a72152a.gif")
+    center center/cover;
+  color: white;
+}
+
+.front-content {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px;
+  border-radius: 15px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.front h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 3.5rem;
+  margin: 0;
+  animation: pulse 2s infinite;
+}
+
+.front p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* --- Mặt trong --- */
+.back {
+  background: #fff0f5; /* Màu hồng nhạt */
+  color: #4a4a4a;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.card-container.open .back-content {
+  animation-delay: 0.5s;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.greeting-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.8rem;
+  color: #e91e63;
+  animation: sparkle 2s infinite;
+  margin-bottom: 20px;
+}
+
+.wishes {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: justify;
+  flex-grow: 1;
+}
+
+.signature {
+  margin-top: 30px;
+  text-align: right;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.8rem;
+  color: #c2185b;
+}
+
+.signature p {
+  margin: 0;
+}
+
+.restart-flowers-btn {
+  margin-top: 20px;
+  background: linear-gradient(45deg, #ff8da1, #ffc0cb);
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.restart-flowers-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Hoạt ảnh --- */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e91e63, 0 0 20px #e91e63;
+  }
+  50% {
+    text-shadow: 0 0 10px #fff, 0 0 15px #ff4081, 0 0 20px #ff4081,
+      0 0 25px #ff4081;
+  }
+}
+
+/* --- Hoa rơi --- */
+.flower {
+  position: absolute;
+  top: -50px; 
+  width: 30px;
+  height: 30px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff8da1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>'); /* Icon bông hoa đơn giản */
+  background-size: contain;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-container.open {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(233, 30, 99, 0.5);
+}

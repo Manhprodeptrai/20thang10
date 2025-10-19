@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc Mừng 20/10</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card-container" id="card">
+        <div class="card-face front">
+          <div class="front-content">
+            <h1>Mở ra nào...</h1>
+            <p>(Click vào đây)</p>
+            <div class="flower-decoration"></div>
+          </div>
+        </div>
+        <div class="card-face back">
+          <div class="back-content">
+            <button class="close-btn" id="closeBtn">✕</button>
+            <h2 class="greeting-title">Gửi bạn iu</h2>
+            <p class="wishes">
+              Nhân ngày 20/10, mong rằng những gì tốt đẹp sẽ luôn ở bên cậu, những ngày mệt mỏi sẽ không còn tìm đến cậu nữa
+              <br /><br />
+              Làm mấy cái này cũng dễ thoai, chỉ mong chút quà nhỏ nhoi nay sẽ khiến bạn mình có tâm trạng tốt hơn. Nhớ đừng quên bữa nhậu :3
+            </p>
+            <div class="signature">
+              <p>Gửi,</p>
+              <p>M</p>
+            </div>
+            <button class="restart-flowers-btn" id="restartBtn">🌸Flowers</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="falling-flowers"></div>
+
+    <audio id="bgMusic" loop>
+      <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
